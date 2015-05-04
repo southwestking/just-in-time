@@ -1,27 +1,20 @@
 package com.lansfordhazel.jit;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class splashScreen extends ActionBarActivity {
 
-    private final int splashDuration = 1000;
+    private final int splashDuration = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash_screen, menu);
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
@@ -30,6 +23,15 @@ public class splashScreen extends ActionBarActivity {
                 splashScreen.this.finish();
             }
         },splashDuration);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_splash_screen, menu);
+
         return true;
     }
 
