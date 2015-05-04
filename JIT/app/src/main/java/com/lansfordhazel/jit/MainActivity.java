@@ -1,6 +1,7 @@
 package com.lansfordhazel.jit;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,8 @@ public class MainActivity extends ActionBarActivity
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
+    private final int activityNo = 1;
+
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     /**
@@ -36,7 +39,7 @@ public class MainActivity extends ActionBarActivity
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
-        // Set up the drawer.
+        //Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
@@ -60,6 +63,8 @@ public class MainActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
+                Intent setting = new Intent(MainActivity.this, Settings.class);
+                MainActivity.this.startActivity(setting);
                 mTitle = getString(R.string.title_section3);
                 break;
         }
@@ -138,6 +143,7 @@ public class MainActivity extends ActionBarActivity
             super.onAttach(activity);
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+
         }
     }
 
